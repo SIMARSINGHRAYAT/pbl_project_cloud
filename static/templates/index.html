@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Disease Prediction System</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-heartbeat"></i> Multi-Disease Prediction System</h1>
+            <p>Advanced AI-powered disease prediction for healthcare professionals</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="prediction">Prediction</button>
+                    <button class="tab-btn" data-tab="training">Model Training</button>
+                    <button class="tab-btn" data-tab="add-disease">Add Disease</button>
+                    <button class="tab-btn" data-tab="about">About</button>
+                </div>
+
+                <div class="tab-content active" id="prediction">
+                    <h2>Disease Prediction</h2>
+                    <div class="form-container">
+                        <div class="form-group">
+                            <label for="disease-select">Select Disease:</label>
+                            <select id="disease-select" class="form-control">
+                                <option value="">-- Select Disease --</option>
+                            </select>
+                        </div>
+
+                        <div id="input-fields-container">
+                        </div>
+
+                        <button id="predict-btn" class="btn primary-btn" disabled>Predict</button>
+                    </div>
+
+                    <div id="result-container" class="hidden">
+                        <h3>Prediction Result</h3>
+                        <div class="result-card">
+                            <div class="result-header">
+                                <span id="disease-name">Disease</span>
+                                <span id="prediction-badge" class="badge">Unknown</span>
+                            </div>
+                            <div class="result-body">
+                                <div class="probability-container">
+                                    <div class="probability-label">Probability:</div>
+                                    <div class="probability-bar-container">
+                                        <div id="probability-bar" class="probability-bar"></div>
+                                        <span id="probability-value">0%</span>
+                                    </div>
+                                </div>
+                                <div id="result-details">
+                                </div>
+                            </div>
+                        </div>
+                        <button id="new-prediction-btn" class="btn secondary-btn">New Prediction</button>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="training">
+                    <h2>Model Training</h2>
+                    <div class="form-container">
+                        <div class="form-group">
+                            <label for="train-disease-select">Select Disease to Train:</label>
+                            <select id="train-disease-select" class="form-control">
+                                <option value="">-- Select Disease --</option>
+                            </select>
+                        </div>
+
+                        <button id="train-btn" class="btn primary-btn" disabled>Train Model</button>
+                    </div>
+
+                    <div id="training-result" class="hidden">
+                        <h3>Training Results</h3>
+                        <div class="result-card">
+                            <div id="training-details">
+                            </div>
+                            <div id="model-comparison" class="chart-container">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="add-disease">
+                    <h2>Add New Disease</h2>
+                    <div class="form-container">
+                        <div class="form-group">
+                            <label for="new-disease-name">Disease Name:</label>
+                            <input type="text" id="new-disease-name" class="form-control" placeholder="Enter disease name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="target-column">Target Column Name:</label>
+                            <input type="text" id="target-column" class="form-control" placeholder="Enter target column name" value="Target">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Features:</label>
+                            <div id="features-list">
+                                <div class="feature-item">
+                                    <input type="text" class="form-control feature-input" placeholder="Feature name">
+                                    <button class="btn icon-btn remove-feature-btn"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <button id="add-feature-btn" class="btn secondary-btn"><i class="fas fa-plus"></i> Add Feature</button>
+                        </div>
+
+                        <button id="save-disease-btn" class="btn primary-btn">Save Disease</button>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="about">
+                    <h2>About the System</h2>
+                    <div class="about-content">
+                        <p>This Multi-Disease Prediction System is designed to help healthcare professionals predict various diseases based on patient data. The system uses machine learning algorithms to analyze patterns in the data and make predictions.</p>
+                        
+                        <h3>Supported Diseases</h3>
+                        <ul id="supported-diseases-list">
+                        </ul>
+                        
+                        <h3>How It Works</h3>
+                        <ol>
+                            <li><strong>Data Input:</strong> Enter patient data for the selected disease.</li>
+                            <li><strong>Preprocessing:</strong> The system handles missing values and outliers.</li>
+                            <li><strong>Prediction:</strong> Machine learning models analyze the data and make predictions.</li>
+                            <li><strong>Results:</strong> View the prediction results with probability scores.</li>
+                        </ol>
+                        
+                        <h3>Technologies Used</h3>
+                        <ul>
+                            <li><strong>Backend:</strong> Python, Flask, Scikit-learn</li>
+                            <li><strong>Frontend:</strong> HTML, CSS, JavaScript</li>
+                            <li><strong>Deployment:</strong> Docker</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Multi-Disease Prediction System | <a href="#" id="show-about-tab">About</a></p>
+        </footer>
+    </div>
+
+    <div id="loading-overlay" class="hidden">
+        <div class="spinner"></div>
+        <p id="loading-message">Processing...</p>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
